@@ -1,3 +1,17 @@
+*   Add `datalist_tag` to create `datalist` form elements.
+
+    Example:
+
+        datalist_tag('countries_datalist', ['Argentina', ['Brazil', { class: 'brazilian_option' }],
+                     ['Chile', 'CL', { disabled: true }]], { class: 'sa-countries-sample' })
+        => <datalist id="countries_datalist" class="sa-countries-sample">
+             <option value="Argentina">Argentina</option>
+             <option value="Brazil" class="brazilian_option">Brazil</option>
+             <option value="CL" disabled="disabled">Chile</option>
+           </datalist>
+
+    *Willian Gustavo Veiga*
+
 *   Render `Hash` and keyword options as dasherized HTML attributes
 
     ```ruby
@@ -35,4 +49,4 @@
 
     *Jarrett Lusso*
 
-Please check [8-1-stable](https://github.com/rails/rails/blob/8-1-stable/actionview/CHANGELOG.md) for previous changes.
+Please check [8-0-stable](https://github.com/rails/rails/blob/8-0-stable/actionview/CHANGELOG.md) for previous changes.
