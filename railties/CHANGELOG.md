@@ -1,29 +1,60 @@
-*   Add authentication generator to give a basic start to an authentication system using database-tracked sessions.
+*   Defer route drawing to the first request, or when url_helpers are called
 
+    Executes the first routes reload in middleware, or when a route set's
+    url_helpers receives a route call / asked if it responds to a route.
+    Previously, this was executed unconditionally on boot, which can
+    slow down boot time unnecessarily for larger apps with lots of routes.
 
-    # Generate with...
+    Environments like production that have `config.eager_load = true` will
+    continue to eagerly load routes on boot.
+
+    *Gannon McGibbon*
+
+*   Generate form helpers to use `textarea*` methods instead of `text_area*` methods
+
+    *Sean Doyle*
+
+*   Add authentication generator to give a basic start to an authentication system using database-tracked sessions and password reset.
+
+    Generate with...
+
+    ```
     bin/rails generate authentication
+    ```
 
-    # Generated files
+    Generated files:
+
+    ```
     app/models/current.rb
     app/models/user.rb
     app/models/session.rb
     app/controllers/sessions_controller.rb
+    app/controllers/passwords_controller.rb
+    app/mailers/passwords_mailer.rb
     app/views/sessions/new.html.erb
+    app/views/passwords/new.html.erb
+    app/views/passwords/edit.html.erb
+    app/views/passwords_mailer/reset.html.erb
+    app/views/passwords_mailer/reset.text.erb
     db/migrate/xxxxxxx_create_users.rb
     db/migrate/xxxxxxx_create_sessions.rb
-
+    test/mailers/previews/passwords_mailer_preview.rb
+    ```
 
     *DHH*
 
 
 *   Add not-null type modifier to migration attributes.
 
+    Generating with...
 
-    # Generating with...
+    ```
     bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!
+    ```
 
-    # Produces:
+    Produces:
+
+    ```ruby
     class CreateUsers < ActiveRecord::Migration[8.0]
       def change
         create_table :users do |t|
@@ -35,22 +66,28 @@
         add_index :users, :email_address, unique: true
       end
     end
-
+    ```
 
     *DHH*
 
-*   Add script folder and generator
+*   Add a `script` folder to applications, and a scripts generator.
 
-    Add a new script default folder to hold your one-off or general purpose
-    scripts, such as data migration scripts, cleanup scripts, etc.
+    The new `script` folder is meant to hold one-off or general purpose scripts,
+    such as data migration scripts, cleanup scripts, etc.
 
     A new script generator allows you to create such scripts:
 
-      `rails generate script my_script`
+    ```
+    bin/rails generate script my_script
+    bin/rails generate script data/backfill
+    ```
 
     You can run the generated script using:
 
-      `ruby script/my_script.rb`
+    ```
+    bundle exec ruby script/my_script.rb
+    bundle exec ruby script/data/backfill.rb
+    ```
 
     *Jerome Dalbert*, *Haroon Ahmed*
 

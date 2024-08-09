@@ -157,11 +157,11 @@ module ActiveSupport
     # to +false+.
     #
     #   # With ActiveSupport::JSON::Encoding.use_standard_json_time_format = true
-    #   Time.utc(2005,2,1,15,15,10).in_time_zone("Hawaii").to_json
+    #   Time.utc(2005,2,1,15,15,10).in_time_zone("Hawaii").as_json
     #   # => "2005-02-01T05:15:10.000-10:00"
     #
     #   # With ActiveSupport::JSON::Encoding.use_standard_json_time_format = false
-    #   Time.utc(2005,2,1,15,15,10).in_time_zone("Hawaii").to_json
+    #   Time.utc(2005,2,1,15,15,10).in_time_zone("Hawaii").as_json
     #   # => "2005/02/01 05:15:10 -1000"
     def as_json(options = nil)
       if ActiveSupport::JSON::Encoding.use_standard_json_time_format
@@ -215,8 +215,7 @@ module ActiveSupport
       elsif formatter = ::Time::DATE_FORMATS[format]
         formatter.respond_to?(:call) ? formatter.call(self).to_s : strftime(formatter)
       else
-        # Change to to_s when deprecation is gone.
-        "#{time.strftime("%Y-%m-%d %H:%M:%S")} #{formatted_offset(false, 'UTC')}"
+        to_s
       end
     end
     alias_method :to_formatted_s, :to_fs

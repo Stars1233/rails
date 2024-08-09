@@ -109,7 +109,7 @@ module Rails
     end
 
     def bin
-      exclude_pattern = Regexp.union([(/rubocop/ if skip_rubocop?), (/brakeman/ if skip_brakeman?)].compact)
+      exclude_pattern = Regexp.union([(/thrust/ if skip_thruster?), (/rubocop/ if skip_rubocop?), (/brakeman/ if skip_brakeman?)].compact)
       directory "bin", { exclude_pattern: exclude_pattern } do |content|
         "#{shebang}\n" + content
       end
@@ -216,7 +216,6 @@ module Rails
     def lib
       empty_directory "lib"
       empty_directory_with_keep_file "lib/tasks"
-      empty_directory_with_keep_file "lib/assets"
     end
 
     def log
@@ -476,7 +475,6 @@ module Rails
       def delete_app_assets_if_api_option
         if options[:api]
           remove_dir "app/assets"
-          remove_dir "lib/assets"
         end
       end
 
