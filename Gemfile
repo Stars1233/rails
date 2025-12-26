@@ -14,7 +14,7 @@ gem "releaser", path: "tools/releaser"
 gem "sprockets-rails", ">= 2.0.0", require: false
 gem "propshaft", ">= 0.1.7", "!= 1.0.1"
 gem "capybara", ">= 3.39"
-gem "selenium-webdriver", ">= 4.20.0"
+gem "selenium-webdriver", ">= 4.33.0"
 
 gem "rack-cache", "~> 1.2"
 gem "stimulus-rails"
@@ -60,7 +60,7 @@ group :rubocop do
 end
 
 group :mdl do
-  gem "mdl", "!= 0.13.0", require: false
+  gem "mdl", ">= 0.13.0", require: false
 end
 
 group :doc do
@@ -76,7 +76,7 @@ gem "dalli", ">= 3.0.1"
 gem "listen", "~> 3.3", require: false
 gem "libxml-ruby", platforms: :ruby
 gem "connection_pool", require: false
-gem "rexml", require: false
+gem "rexml", ">= 3.4.2", require: false
 gem "msgpack", ">= 1.7.0", require: false
 
 # for railties
@@ -126,7 +126,7 @@ end
 
 # Action Mailbox
 gem "aws-sdk-sns", require: false
-gem "webmock"
+gem "webmock", ">= 3.25.1"
 
 # Add your own local bundler stuff.
 local_gemfile = File.expand_path(".Gemfile", __dir__)
