@@ -37,7 +37,7 @@ gem "argon2", "~> 2.3.2", require: false
 gem "terser", ">= 1.1.4", require: false
 
 # Explicitly avoid 1.x that doesn't support Ruby 2.4+
-gem "json", ">= 2.0.0", "!=2.7.0"
+gem "json", ">= 2.10.2"
 
 # Workaround until all supported Ruby versions ship with uri version 0.13.1 or higher.
 gem "uri", ">= 0.13.1", require: false
@@ -53,7 +53,7 @@ group :rubocop do
   gem "rubocop-md", require: false
 
   # This gem is used in Railties tests so it must be a development dependency.
-  gem "rubocop-rails-omakase", require: false
+  gem "rubocop-rails-omakase", ">= 1.1.0", require: false
 end
 
 group :mdl do
@@ -85,9 +85,9 @@ gem "web-console", require: false
 # Action Pack and railties
 rack_version = ENV.fetch("RACK", "~> 3.0")
 if rack_version != "head"
-  gem "rack", rack_version
+  gem "rack", ">= 3.1.12", rack_version
 else
-  gem "rack", git: "https://github.com/rack/rack.git", branch: "main"
+  gem "rack", ">= 3.1.12", git: "https://github.com/rack/rack.git", branch: "main"
 end
 
 gem "useragent", require: false
