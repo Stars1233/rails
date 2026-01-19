@@ -115,7 +115,7 @@ end
 # Active Storage
 group :storage do
   gem "aws-sdk-s3", require: false
-  gem "google-cloud-storage", "~> 1.11", require: false
+  gem "google-cloud-storage", "~> 1.55", ">= 1.55.0", require: false
 
   gem "image_processing", "~> 1.2"
 end
