@@ -29,7 +29,7 @@ gem "thruster", require: false
 # require: false so bcrypt and argon2 are loaded only when has_secure_password is used.
 # This is to avoid Active Model (and by extension the entire framework)
 # being dependent on binary libraries.
-gem "bcrypt", "~> 3.1.11", require: false
+gem "bcrypt", "~> 3.1.22", require: false
 gem "argon2", "~> 2.3.2", require: false
 
 # This needs to be with require false to avoid it being automatically loaded by
@@ -37,7 +37,7 @@ gem "argon2", "~> 2.3.2", require: false
 gem "terser", ">= 1.1.4", require: false
 
 # Explicitly avoid 1.x that doesn't support Ruby 2.4+
-gem "json", ">= 2.0.0", "!=2.7.0"
+gem "json", ">= 2.15.2.1"
 
 # Workaround until all supported Ruby versions ship with uri version 0.13.1 or higher.
 gem "uri", ">= 0.13.1", require: false
@@ -45,15 +45,15 @@ gem "uri", ">= 0.13.1", require: false
 gem "prism"
 
 group :rubocop do
-  gem "rubocop", "1.79.2", require: false
-  gem "rubocop-minitest", require: false
+  gem "rubocop", "1.80.0", require: false
+  gem "rubocop-minitest", ">= 0.38.0", require: false
   gem "rubocop-packaging", require: false
-  gem "rubocop-performance", require: false
-  gem "rubocop-rails", require: false
-  gem "rubocop-md", require: false
+  gem "rubocop-performance", ">= 1.25.0", require: false
+  gem "rubocop-rails", ">= 2.31.0", require: false
+  gem "rubocop-md", ">= 2.0.2", require: false
 
   # This gem is used in Railties tests so it must be a development dependency.
-  gem "rubocop-rails-omakase", require: false
+  gem "rubocop-rails-omakase", ">= 1.1.0", require: false
 end
 
 group :mdl do
@@ -80,7 +80,7 @@ gem "msgpack", ">= 1.7.0", require: false
 gem "bootsnap", ">= 1.4.4", require: false
 gem "webrick", require: false
 gem "jbuilder", require: false
-gem "web-console", require: false
+gem "web-console", ">= 4.3.0", require: false
 
 # Action Pack and railties
 rack_version = ENV.fetch("RACK", "~> 3.0")
@@ -115,7 +115,7 @@ end
 # Active Storage
 group :storage do
   gem "aws-sdk-s3", require: false
-  gem "google-cloud-storage", "~> 1.11", require: false
+  gem "google-cloud-storage", "~> 1.55", ">= 1.55.0", require: false
 
   gem "image_processing", "~> 1.2"
 end
