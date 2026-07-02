@@ -22,9 +22,9 @@ gem "importmap-rails", ">= 1.2.3"
 gem "tailwindcss-rails"
 gem "dartsass-rails"
 gem "solid_cache"
-gem "solid_queue"
+gem "solid_queue", ">= 1.1.3"
 gem "solid_cable"
-gem "kamal", ">= 2.1.0", require: false
+gem "kamal", ">= 2.5.0", require: false
 gem "thruster", require: false
 # require: false so bcrypt and argon2 are loaded only when has_secure_password is used.
 # This is to avoid Active Model (and by extension the entire framework)
@@ -57,7 +57,7 @@ group :rubocop do
 end
 
 group :mdl do
-  gem "mdl", "!= 0.13.0", require: false
+  gem "mdl", ">= 0.13.0", require: false
 end
 
 group :doc do
@@ -81,7 +81,7 @@ gem "msgpack", ">= 1.7.0", require: false
 gem "bootsnap", ">= 1.4.4", require: false
 gem "webrick", require: false
 gem "jbuilder", require: false
-gem "web-console", require: false
+gem "web-console", ">= 4.3.0", require: false
 
 # Action Pack and railties
 rack_version = ENV.fetch("RACK", "~> 3.0")
@@ -96,9 +96,9 @@ gem "useragent", require: false
 # Active Job
 group :job do
   gem "resque", require: false
-  gem "resque-scheduler", require: false
+  gem "resque-scheduler", ">= 5.0.0", require: false
   gem "queue_classic", ">= 4.0.0", require: false, platforms: :ruby
-  gem "sneakers", require: false
+  gem "sneakers", ">= 2.12.0", require: false
   gem "backburner", require: false
 end
 
@@ -116,7 +116,7 @@ end
 # Active Storage
 group :storage do
   gem "aws-sdk-s3", require: false
-  gem "google-cloud-storage", "~> 1.11", require: false
+  gem "google-cloud-storage", "~> 1.55", ">= 1.55.0", require: false
 
   gem "image_processing", "~> 2.0"
   gem "ruby-vips", "~> 2.3"
