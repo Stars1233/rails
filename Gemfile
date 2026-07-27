@@ -22,7 +22,7 @@ gem "importmap-rails", ">= 1.2.3"
 gem "tailwindcss-rails"
 gem "dartsass-rails"
 gem "solid_cache"
-gem "solid_queue"
+gem "solid_queue", ">= 1.2.1"
 gem "solid_cable"
 gem "kamal", ">= 2.1.0", require: false
 gem "thruster", require: false
